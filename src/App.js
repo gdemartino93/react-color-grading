@@ -1,8 +1,9 @@
+import ColorGrading from "./components/ColorGrading";
 
 function App() {
   return (
     <div className="App">
-        <span className='text-danger'>assdasd</span>
+      <ColorGrading />
     </div>
   );
 }
