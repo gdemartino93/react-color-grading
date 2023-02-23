@@ -5,7 +5,8 @@ const SingleColor = ({rgb, type, weight}) => {
   return (
     // create 3 classi con lo stesso nome dei valori di type per gestire il nome del colore e fare in modo che si legge con qualsiasi colore/sfumatura.
     // Passiamo type tra le classi
-    <div className={`col-4 d-flex justify-content-center align-items-center box ${type}`} 
+    
+    <div className={`col-2 col- my-5 d-flex justify-content-center align-items-center box ${type}`} 
     // passiamo rgb con lo spread operator poichè rgb è un array 
     style={{ backgroundColor : rgbToHex(...rgb) }}>
 
