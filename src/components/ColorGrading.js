@@ -1,23 +1,24 @@
 import React , { useState } from 'react';
 import { v4 } from 'uuid';
-
+import Values from 'values.js'
 
 
 const ColorGrading = () => {
+  const color = new Values('rgba(0,0,0,0.5)');
+  console.log(color);
   const [colorInput , setColorInput] = useState({
     color : "red",
     qty : 5
   })
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(colorInput)
   }
   const handleChange = (e) => {
     const { name , value} = e.target;
     setColorInput({...colorInput,
     [name]: value,})
     
-    console.log(e.target.value)
+
   }
 
   return <>
