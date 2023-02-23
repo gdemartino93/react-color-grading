@@ -59,11 +59,15 @@ const ColorGrading = () => {
         <button className='btn btn-success' type='submit'> Select</button>
     </form>
     <div className='container'>
+      <div className='col-12'>
         {
-          selectedColor > 0 ?
-          (selectedColor.map(el => <SingleColor key={v4} {...el} />))
+          selectedColor.length > 0 ?
+          (selectedColor.map((el) => <SingleColor key={v4} {...el} />))
           : "Loading..."
         }
+
+      </div>
+
     </div>
   </>
 }
