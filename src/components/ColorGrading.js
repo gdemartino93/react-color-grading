@@ -1,5 +1,6 @@
 import React , { useState } from 'react';
-import { v4 } from 'uuid';
+import uuid from 'react-uuid';
+import {uuid as keyid} from 'react-uuid';
 import Values from 'values.js'
 import SingleColor from './SingleColor';
 
@@ -35,7 +36,7 @@ const ColorGrading = () => {
     <form className='d-flex align-items-center gap-2 p-3' onSubmit={handleSubmit} >
         <div className='d-flex gap-3'>
             <input
-              type="text"
+              type="color"
               id='color'
               name='color'
               value={colorInput.color}
@@ -59,10 +60,10 @@ const ColorGrading = () => {
         <button className='btn btn-success' type='submit'> Select</button>
     </form>
     <div className='container'>
-      <div className='col-12'>
+      <div className='row d-flex flex-wrap justify-content-around gap-5'>
         {
           selectedColor.length > 0 ?
-          (selectedColor.map((el) => <SingleColor key={v4} {...el} />))
+          (selectedColor.map((el) => <SingleColor key={keyid} {...el} />))
           : "Loading..."
         }
 

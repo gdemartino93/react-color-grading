@@ -121,3 +121,18 @@ p {
   margin: 0;
   font-size: 1rem;
 }
+.box{
+  // width: 150px;
+  height: 50px;
+  border-radius: 18px;
+
+}
+.base{
+  border: 1px solid white;
+}
+.tint{
+  color:  #222 !important;
+}
+.shade{
+  color: var(--text-color);
+}
