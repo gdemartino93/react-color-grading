@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React , { useState, useEffect } from 'react';
 import uuid from 'react-uuid';
 import {uuid as keyid} from 'react-uuid';
 import Values from 'values.js'
@@ -12,9 +12,6 @@ const ColorGrading = () => {
     qty : 5
   });
   const [selectedColor , setSelectedColor] = useState([]);
-
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if ( colorInput.color && colorInput.qty){
@@ -31,7 +28,12 @@ const ColorGrading = () => {
     [name]: value,})
   
   }
-  console.log(selectedColor);
+  useEffect(()=>{
+    setColorInput({qty : 5, color:''})
+    setSelectedColor(
+      new Values('#1194ec').all(Math.round(100 / parseInt(10 ,10)) * 2 )
+    )  
+  },[])
   return <>
     <form className='d-flex align-items-center gap-2 p-3' onSubmit={handleSubmit} >
         <div className='d-flex gap-3'>
