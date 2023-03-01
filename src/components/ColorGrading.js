@@ -6,6 +6,7 @@ import SingleColor from './SingleColor';
 
 
 const ColorGrading = () => {
+  const [isError , setIsError] = useState(false);
 
   const [colorInput , setColorInput] = useState({
     color : "",
@@ -16,13 +17,19 @@ const ColorGrading = () => {
     e.preventDefault();
     if ( colorInput.color && colorInput.qty){
       const {color , qty } = colorInput;
-      setSelectedColor(
-        new Values(color).all(Math.round(100 / parseInt(qty,10)) * 2 )
-      )  
+      try {
+        setSelectedColor(
+          new Values(color).all(Math.round(100 / parseInt(qty,10)) * 2 )
+        )         
+      } catch (error) {
+        setIsError(true)
+      }
+
     }
 
   }
   const handleChange = (e) => {
+    setIsError(false)
     const { name , value} = e.target;
     setColorInput({...colorInput,
     [name]: value,})
@@ -63,10 +70,14 @@ const ColorGrading = () => {
     </form>
     <div className='container'>
       <div className='d-flex flex-wrap justify-content-around gap-1'>
+
         {
-          selectedColor.length > 0 ?
+          (isError) ? <h2 className='text-danger fw-bold fs-1'>Error </h2> :           selectedColor.length > 0 ?
           (selectedColor.map((el) => <SingleColor key={keyid} {...el} />))
           : "Loading..."
+        }
+        {
+
         }
 
       </div>

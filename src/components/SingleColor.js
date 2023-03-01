@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { rgbToHex } from '../utilities/helper'
 
 const SingleColor = ({rgb, type, weight}) => {
+  const [isError , setIsError] = useState(false);
   const [textColor , setTextColor] = useState(false);
   // creiamo la funzione per copiare il colore
   const copiaColore = (e) => {
@@ -10,12 +11,13 @@ const SingleColor = ({rgb, type, weight}) => {
       // se la promise ha successo cambiamo lo stato in true
       .then(()=>{
         setTextColor(true)
-        setInterval(() => {
-          setTimeout(setTextColor(false))
-        }, 2000);
-        console.log(e.event)
+        setTimeout(() => {
+          setTextColor(false)
+        }, 3000);
       } )
-      .catch(err => console.log(err));
+      .catch(
+        setIsError(true)
+      );
   };
   return (
     // create 3 classi con lo stesso nome dei valori di type per gestire il nome del colore e fare in modo che si legge con qualsiasi colore/sfumatura.
@@ -24,7 +26,7 @@ const SingleColor = ({rgb, type, weight}) => {
     <div className={`col-2 my-3 d-flex justify-content-center align-items-center box ${type}`} 
     // passiamo rgb con lo spread operator poichè rgb è un array 
     style={{ backgroundColor : rgbToHex(...rgb) }}>
-
+      
         <span style={{ cursor : 'pointer' }} onClick={copiaColore}>
           
           {
