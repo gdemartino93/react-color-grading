@@ -4,11 +4,14 @@ import { rgbToHex } from '../utilities/helper'
 const SingleColor = ({rgb, type, weight}) => {
   const [textColor , setTextColor] = useState(false);
   // creiamo la funzione per copiare il colore
-  const copiaColore = () => {
+  const copiaColore = (e) => {
     navigator.clipboard
       .writeText(rgbToHex(...rgb))
       // se la promise ha successo cambiamo lo stato in true
-      .then(()=> setTextColor(true))
+      .then(()=>{
+        setTextColor(true)
+        console.log(e.event)
+      } )
       .catch(err => console.log(err));
   };
   return (
