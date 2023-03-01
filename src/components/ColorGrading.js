@@ -8,8 +8,8 @@ import SingleColor from './SingleColor';
 const ColorGrading = () => {
 
   const [colorInput , setColorInput] = useState({
-    color : "red",
-    qty : 0
+    color : "",
+    qty : 5
   });
   const [selectedColor , setSelectedColor] = useState([]);
 
@@ -36,7 +36,7 @@ const ColorGrading = () => {
     <form className='d-flex align-items-center gap-2 p-3' onSubmit={handleSubmit} >
         <div className='d-flex gap-3'>
             <input
-              type="color"
+              type="text"
               id='color'
               name='color'
               value={colorInput.color}
@@ -60,7 +60,7 @@ const ColorGrading = () => {
         <button className='btn btn-success' type='submit'> Select</button>
     </form>
     <div className='container'>
-      <div className='row d-flex flex-wrap justify-content-around gap-5'>
+      <div className='d-flex flex-wrap justify-content-around gap-1'>
         {
           selectedColor.length > 0 ?
           (selectedColor.map((el) => <SingleColor key={keyid} {...el} />))
